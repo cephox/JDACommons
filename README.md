@@ -7,7 +7,8 @@ This repository has got an own command system. To use it, you have to create a n
 jda = new JDABuilder(AccountType.BOT)
   ...
   .addEventListener(new CommandHandlerBuilder("YOUR COMMAND PREFIX", BOTS_CAN_USE_COMMANDS (optional, boolean), WEBHOOKS_CAN_USE_COMMANDS (optional, boolean))
-  .addCommand(COMMAND)...)
+  .addCommand(COMMAND)
+  .addCommand(2_COMMAND).build())
   ...
 ```
 To create a new command, you have got two different options: private commands and guild commands
