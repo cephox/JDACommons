@@ -23,9 +23,7 @@ package net.ce_phox.jdacommons.lang;
     at
     17:16.
     
-    Skype: psalm.sio
     Discord: ce_phox#1259
-    Minecraft: ce_phox
 
 */
 

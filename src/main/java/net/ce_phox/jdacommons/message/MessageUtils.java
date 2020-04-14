@@ -29,9 +29,7 @@ import java.util.List;
     at
     17:17.
     
-    Skype: psalm.sio
     Discord: ce_phox#1259
-    Minecraft: ce_phox
 
 */
 

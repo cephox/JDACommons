@@ -27,9 +27,7 @@ import net.dv8tion.jda.api.sharding.ShardManager;
     at
     11:47.
     
-    Skype: psalm.sio
     Discord: ce_phox#1259
-    Minecraft: ce_phox
 
 */
 

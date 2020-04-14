@@ -31,9 +31,7 @@ import java.time.temporal.TemporalAccessor;
     at
     16:48.
     
-    Skype: psalm.sio
     Discord: ce_phox#1259
-    Minecraft: ce_phox
 
 */
 

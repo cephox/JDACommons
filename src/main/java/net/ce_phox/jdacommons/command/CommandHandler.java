@@ -33,9 +33,7 @@ import java.util.regex.Pattern;
     at
     17:58.
     
-    Skype: psalm.sio
     Discord: ce_phox#1259
-    Minecraft: ce_phox
 
 */
 

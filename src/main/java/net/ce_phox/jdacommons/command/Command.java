@@ -25,14 +25,11 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
     at
     17:53.
     
-    Skype: psalm.sio
     Discord: ce_phox#1259
-    Minecraft: ce_phox
-
 
 */
 
-public interface Command extends CommandBase {
+public interface Command {
 
     /**
      * Executing the command

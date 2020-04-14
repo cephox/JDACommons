@@ -27,9 +27,7 @@ import java.util.concurrent.TimeUnit;
     at
     17:26.
     
-    Skype: psalm.sio
     Discord: ce_phox#1259
-    Minecraft: ce_phox
 
 */
 

@@ -33,9 +33,7 @@ import javax.annotation.Nonnull;
     at
     17:43.
     
-    Skype: psalm.sio
     Discord: ce_phox#1259
-    Minecraft: ce_phox
 
 */
 
