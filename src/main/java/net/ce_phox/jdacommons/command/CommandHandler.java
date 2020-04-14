@@ -1,5 +1,6 @@
 package net.ce_phox.jdacommons.command;
 
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
@@ -59,7 +60,6 @@ public class CommandHandler extends ListenerAdapter {
      * @param event
      */
     public void handle(GuildMessageReceivedEvent event) {
-
         // Splitting the message by spaces and removing the command prefix
         String[] split = event.getMessage().getContentRaw()
                 .replaceFirst("(?i)" + Pattern.quote(prefix), "")
@@ -78,9 +78,29 @@ public class CommandHandler extends ListenerAdapter {
                 ((Command) base).execute(event, args);
 
             }
-
         }
+    }
 
+    public void handle(MessageReceivedEvent event) {
+        // Splitting the message by spaces and removing the command prefix
+        String[] split = event.getMessage().getContentRaw()
+                .replaceFirst("(?i)" + Pattern.quote(prefix), "")
+                .split(" ");
+
+        // Getting the invoke
+        String invoke = split[0].toLowerCase();
+
+        // Executing command
+        if (commands.containsKey(invoke)) {
+            CommandBase base = commands.get(invoke);
+
+            if (base instanceof PrivateCommand) {
+
+                String[] args = Arrays.copyOfRange(split, 1, split.length);
+                ((PrivateCommand) base).execute(event, args);
+
+            }
+        }
     }
 
     /**
@@ -135,7 +155,23 @@ public class CommandHandler extends ListenerAdapter {
 
         if (!event.getAuthor().isBot() && !event.isWebhookMessage())
             handle(event);
+    }
 
+    @Override
+    public void onMessageReceived(@Nonnull MessageReceivedEvent event) {
+        if (!event.getMessage().getContentRaw().startsWith(prefix))
+            return;
+
+        if (useBots && event.getAuthor().isBot()) {
+            handle(event);
+            return;
+        } else if (useWebhooks && event.isWebhookMessage()) {
+            handle(event);
+            return;
+        }
+
+        if (!event.getAuthor().isBot() && !event.isWebhookMessage())
+            handle(event);
     }
 
     /**
