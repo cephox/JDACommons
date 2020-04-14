@@ -5,8 +5,8 @@ This is a utils repository for JDA:4.1.1_127
 
 
 ## Implementation
+**Implementing JDA**
 ```xml
-<!-- JDA Dependency -->
 <dependency>
   <groupId>net.dv8tion</groupId>
   <artifactId>JDA</artifactId>
