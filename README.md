@@ -7,9 +7,38 @@ This repository has got an own command system. To use it, you have to create a n
 jda = new JDABuilder(AccountType.BOT)
   ...
   .addEventListener(new CommandHandlerBuilder("YOUR COMMAND PREFIX", BOTS_CAN_USE_COMMANDS (optional, boolean), WEBHOOKS_CAN_USE_COMMANDS (optional, boolean))
-  .addCommand()
-  ...)
+  .addCommand(COMMAND)...)
   ...
+```
+To create a new command, you have got two different options: private commands and guild commands
+
+**Guild Commands**
+```java
+public class MyGuildCommand implements Command {
+  public void getInvoke() {
+    return "foo";
+  }
+  public void getHelp() {
+    return "Your help (to get the Command Prefix use `getPrefix()`";
+  }
+  public void execute(GuildMessageRecievedEvent event, String[] args) {
+    // Todo: Do sth
+  }
+}
+```
+**Private Commands**
+```java
+public class MyGuildCommand implements PrivateCommand {
+  public void getInvoke() {
+    return "foo";
+  }
+  public void getHelp() {
+    return "Your help (to get the Command Prefix use `getPrefix()`";
+  }
+  public void execute(MessageRecievedEvent event, String[] args) {
+    // Todo: Do sth
+  }
+}
 ```
 
 ## Implementation
