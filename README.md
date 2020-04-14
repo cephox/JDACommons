@@ -8,7 +8,7 @@ jda = new JDABuilder(AccountType.BOT)
   ...
   .addEventListener(new CommandHandlerBuilder("YOUR COMMAND PREFIX", BOTS_CAN_USE_COMMANDS (optional, boolean), WEBHOOKS_CAN_USE_COMMANDS (optional, boolean))
   .addCommand(COMMAND)
-  .addCommand(2_COMMAND).build())
+  .addCommand(COMMAND2).build())
   ...
 ```
 To create a new command, you have got two different options: private commands and guild commands
