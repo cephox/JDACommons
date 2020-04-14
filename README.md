@@ -2,7 +2,15 @@
 This is a utils repository for JDA:4.1.1_127
 
 ## Using Commandsystem
-
+This repository has got an own command system. To use it, you have to create a new System.
+```java
+jda = new JDABuilder(AccountType.BOT)
+  ...
+  .addEventListener(new CommandHandlerBuilder("YOUR COMMAND PREFIX", BOTS_CAN_USE_COMMANDS (optional, boolean), WEBHOOKS_CAN_USE_COMMANDS (optional, boolean))
+  .addCommand()
+  ...)
+  ...
+```
 
 ## Implementation
 **Implementing JDA**
