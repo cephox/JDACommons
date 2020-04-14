@@ -28,7 +28,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 */
 
 
-public interface PrivateCommand {
+public interface PrivateCommand extends CommandBase {
 
     /**
      * Executing the command
