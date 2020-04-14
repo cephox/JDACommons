@@ -41,7 +41,7 @@ import java.util.regex.Pattern;
 
 public class CommandHandler extends ListenerAdapter {
 
-    private HashMap<String, Command> commands;
+    private HashMap<String, CommandBase> commands;
     private String prefix;
 
     private boolean useBots, useWebhooks;
@@ -70,10 +70,14 @@ public class CommandHandler extends ListenerAdapter {
 
         // Executing command
         if (commands.containsKey(invoke)) {
-            String[] args = Arrays.copyOfRange(split, 1, split.length);
+            CommandBase base = commands.get(invoke);
 
-            CommandExecutedEvent commandEvent = new CommandExecutedEvent(event.getMessage(), event.getMember(), event.getAuthor(), event.isWebhookMessage(), event.getChannel(), event.getMessageIdLong(), event.getMessageId(), event.getGuild(), event.getJDA(), event.getResponseNumber());
-            commands.get(invoke).execute(commandEvent, args);
+            if (base instanceof Command) {
+
+                String[] args = Arrays.copyOfRange(split, 1, split.length);
+                ((Command) base).execute(event, args);
+
+            }
 
         }
 
@@ -84,7 +88,7 @@ public class CommandHandler extends ListenerAdapter {
      *
      * @param command
      */
-    public void addCommand(Command command) {
+    public void addCommand(CommandBase command) {
         if (!commands.containsKey(command.getInvoke()))
             commands.put(command.getInvoke(), command);
     }
@@ -96,7 +100,7 @@ public class CommandHandler extends ListenerAdapter {
      * @param invoke
      * @return
      */
-    public Command getCommand(String invoke) {
+    public CommandBase getCommand(String invoke) {
         if (commands.containsKey(invoke))
             return commands.get(invoke);
         return null;
@@ -107,7 +111,7 @@ public class CommandHandler extends ListenerAdapter {
      *
      * @return
      */
-    public Collection<Command> getCommands() {
+    public Collection<CommandBase> getCommands() {
         return commands.values();
     }
 

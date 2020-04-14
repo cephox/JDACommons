@@ -1,5 +1,7 @@
 package net.ce_phox.jdacommons.command;
 
+import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+
 /*****************************************************************************
  *                                                                           *
  *  Urheberrechtshinweis:                                                    *
@@ -30,21 +32,7 @@ package net.ce_phox.jdacommons.command;
 
 */
 
-public interface Command {
-
-    /**
-     * Getting the invoke of the Command e.g. "help"
-     *
-     * @return
-     */
-    String getInvoke();
-
-    /**
-     * Getting the help of a command e.g. for a possible help-command
-     *
-     * @return
-     */
-    String getHelp();
+public interface Command extends CommandBase {
 
     /**
      * Executing the command
@@ -52,6 +40,6 @@ public interface Command {
      * @param event
      * @param args
      */
-    void execute(CommandExecutedEvent event, String[] args);
+    void execute(GuildMessageReceivedEvent event, String[] args);
 
 }

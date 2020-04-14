@@ -90,7 +90,7 @@ public class CommandHandlerBuilder {
      * @param command
      * @return
      */
-    public CommandHandlerBuilder addCommand(Command command) {
+    public CommandHandlerBuilder addCommand(CommandBase command) {
         handler.addCommand(command);
         return this;
     }
