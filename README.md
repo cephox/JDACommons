@@ -43,7 +43,6 @@ public class MyGuildCommand implements PrivateCommand {
 ```
 
 ## Implementation
-**Implementing JDA**
 ### Maven
 You have to implement the JDA from net.dv8tion, otherwise this repository won't work and you cannot make your Bot with this repository
 ```xml
