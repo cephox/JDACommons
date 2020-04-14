@@ -79,6 +79,11 @@ public class CommandHandler extends ListenerAdapter {
         }
     }
 
+    /**
+     * Handling command execution via {@link MessageReceivedEvent}
+     *
+     * @param event
+     */
     public void handle(MessageReceivedEvent event) {
         // Splitting the message by spaces and removing the command prefix
         String[] split = event.getMessage().getContentRaw()
