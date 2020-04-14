@@ -41,13 +41,13 @@ import java.util.regex.Pattern;
 public class CommandHandler extends ListenerAdapter {
 
     private HashMap<String, CommandBase> commands;
-    private String prefix;
+    private static String prefix;
 
     private boolean useBots, useWebhooks;
 
     public CommandHandler(String prefix, boolean useBots, boolean useWebhooks) {
         commands = new HashMap<>();
-        this.prefix = prefix;
+        prefix = prefix;
         this.useBots = useBots;
         this.useWebhooks = useWebhooks;
     }
@@ -180,12 +180,12 @@ public class CommandHandler extends ListenerAdapter {
     /**
      * Getters and Setters
      */
-    public String getPrefix() {
+    public static String getPrefix() {
         return prefix;
     }
 
-    public void setPrefix(String prefix) {
-        this.prefix = prefix;
+    public static void setPrefix(String prefix) {
+        CommandHandler.prefix = prefix;
     }
 
     public boolean isUseBots() {
@@ -203,4 +203,5 @@ public class CommandHandler extends ListenerAdapter {
     public void setUseWebhooks(boolean useWebhooks) {
         this.useWebhooks = useWebhooks;
     }
+
 }
