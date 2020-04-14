@@ -7,12 +7,24 @@
     <groupId>net.ce_phox</groupId>
     <artifactId>JDACommons</artifactId>
     <version>1.0</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>4.0.0_39</version>
+            <version>4.1.1_127</version>
         </dependency>
     </dependencies>
 
