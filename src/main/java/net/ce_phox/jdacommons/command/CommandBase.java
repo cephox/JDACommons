@@ -42,4 +42,8 @@ public interface CommandBase {
      */
     String getHelp();
 
+    default String getCommandPrefix() {
+        return CommandHandler.getPrefix();
+    }
+
 }
