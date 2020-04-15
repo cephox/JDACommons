@@ -83,7 +83,6 @@ public class CommandHandler extends ListenerAdapter {
             String[] args = Arrays.copyOfRange(split, 1, split.length);
             ((Command) base).execute(event, args);
 
-
         }
     }
 
