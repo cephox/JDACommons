@@ -1,6 +1,6 @@
 package net.ce_phox.jdacommons.command;
 
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 /*****************************************************************************
  *                                                                           *
@@ -37,6 +37,6 @@ public interface Command {
      * @param event
      * @param args
      */
-    void execute(GuildMessageReceivedEvent event, String[] args);
+    void execute(MessageReceivedEvent event, String[] args);
 
 }

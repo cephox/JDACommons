@@ -1,7 +1,6 @@
 package net.ce_phox.jdacommons.command;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import javax.annotation.Nonnull;
@@ -40,9 +39,8 @@ import java.util.regex.Pattern;
 
 public class CommandHandler extends ListenerAdapter {
 
-    private HashMap<String, CommandBase> commands;
     private static String prefix;
-
+    private HashMap<String, CommandBase> commands;
     private boolean useBots, useWebhooks;
 
     public CommandHandler(String prefix, boolean useBots, boolean useWebhooks) {
@@ -53,30 +51,14 @@ public class CommandHandler extends ListenerAdapter {
     }
 
     /**
-     * Handling command execution via {@link GuildMessageReceivedEvent}
-     *
-     * @param event
+     * Getters and Setters
      */
-    public void handle(GuildMessageReceivedEvent event) {
-        // Splitting the message by spaces and removing the command prefix
-        String[] split = event.getMessage().getContentRaw()
-                .replaceFirst("(?i)" + Pattern.quote(prefix), "")
-                .split(" ");
+    public static String getPrefix() {
+        return prefix;
+    }
 
-        // Getting the invoke
-        String invoke = split[0].toLowerCase();
-
-        // Executing command
-        if (commands.containsKey(invoke)) {
-            CommandBase base = commands.get(invoke);
-
-            if (base instanceof Command) {
-
-                String[] args = Arrays.copyOfRange(split, 1, split.length);
-                ((Command) base).execute(event, args);
-
-            }
-        }
+    public static void setPrefix(String prefix) {
+        CommandHandler.prefix = prefix;
     }
 
     /**
@@ -95,14 +77,13 @@ public class CommandHandler extends ListenerAdapter {
 
         // Executing command
         if (commands.containsKey(invoke)) {
+
             CommandBase base = commands.get(invoke);
 
-            if (base instanceof PrivateCommand) {
+            String[] args = Arrays.copyOfRange(split, 1, split.length);
+            ((Command) base).execute(event, args);
 
-                String[] args = Arrays.copyOfRange(split, 1, split.length);
-                ((PrivateCommand) base).execute(event, args);
 
-            }
         }
     }
 
@@ -144,23 +125,6 @@ public class CommandHandler extends ListenerAdapter {
      * @param event
      */
     @Override
-    public void onGuildMessageReceived(@Nonnull GuildMessageReceivedEvent event) {
-        if (!event.getMessage().getContentRaw().startsWith(prefix))
-            return;
-
-        if (useBots && event.getAuthor().isBot()) {
-            handle(event);
-            return;
-        } else if (useWebhooks && event.isWebhookMessage()) {
-            handle(event);
-            return;
-        }
-
-        if (!event.getAuthor().isBot() && !event.isWebhookMessage())
-            handle(event);
-    }
-
-    @Override
     public void onMessageReceived(@Nonnull MessageReceivedEvent event) {
         if (!event.getMessage().getContentRaw().startsWith(prefix))
             return;
@@ -175,17 +139,6 @@ public class CommandHandler extends ListenerAdapter {
 
         if (!event.getAuthor().isBot() && !event.isWebhookMessage())
             handle(event);
-    }
-
-    /**
-     * Getters and Setters
-     */
-    public static String getPrefix() {
-        return prefix;
-    }
-
-    public static void setPrefix(String prefix) {
-        CommandHandler.prefix = prefix;
     }
 
     public boolean isUseBots() {
