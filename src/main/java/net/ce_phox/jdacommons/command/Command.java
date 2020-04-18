@@ -39,4 +39,8 @@ public interface Command {
      */
     void execute(MessageReceivedEvent event, String[] args);
 
+    default void deleteLastMessage(MessageReceivedEvent event) {
+        event.getChannel().purgeMessages(event.getMessage());
+    }
+
 }
