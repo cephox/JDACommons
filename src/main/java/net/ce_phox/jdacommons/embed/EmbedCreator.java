@@ -77,6 +77,11 @@ public class EmbedCreator {
         return this;
     }
 
+    public EmbedCreator setColor(Color c) {
+        embed.setColor(c);
+        return this;
+    }
+
     /**
      * Sets the title of the Embed
      *
@@ -279,9 +284,19 @@ public class EmbedCreator {
      * @return the resulting Message
      */
     public Message build() {
-        messageBuilder.append(content);
+        if (content != null)
+            messageBuilder.append(content);
         messageBuilder.setEmbed(embed.build());
         return messageBuilder.build();
+    }
+
+    /**
+     * Building the while embed to {@link MessageEmbed}
+     *
+     * @return
+     */
+    public MessageEmbed buildToEmbed() {
+        return embed.build();
     }
 
 }
